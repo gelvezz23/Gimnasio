@@ -42,7 +42,8 @@ public class tablaInstructor extends AbstractTableModel{
                 case 3 : return "Telefono";
                 case 4 : return "Especialidad";
                 case 5 : return "Jornada";
-                default: return "Hora";
+                case 6 : return "Hora";
+                default: return ":v";
             
             }
     }
@@ -67,7 +68,8 @@ public class tablaInstructor extends AbstractTableModel{
             case 3 : return instructor.getTelefono();
             case 4 : return instructor.getEspecialidad();
             case 5 : return instructor.getJornada();
-            default : return instructor.getHora();
+            case 6 : return instructor.getHora();
+            default: return ":v";
                     
         
         }

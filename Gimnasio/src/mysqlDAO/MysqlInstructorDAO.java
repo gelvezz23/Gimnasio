@@ -94,12 +94,7 @@ Connection conn;
         } catch (Exception e) {
             System.out.println("Error Elimiar " + e);
         }finally{
-            try {
-                conn.close();
-            } catch (SQLException ex) {
-                Logger.getLogger(MysqlClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            
+                       
         }
     }
 
@@ -131,30 +126,48 @@ Connection conn;
 
     @Override
     public List consultarTodos() {
-   
-      PreparedStatement pst;
+       PreparedStatement pst =null;
        ResultSet rs= null;
         List<InstructorVO> instructor = new ArrayList<>();
         try {
            pst = conn.prepareStatement(BUSCAR);
            rs = pst.executeQuery();
           while(rs.next()){
+              
           instructor.add(buscando(rs));
+             
           }
           
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println("error buscar todos" + e);
         }finally{
         if(rs != null){
             try { 
                 rs.close();
             } catch (SQLException ex) {
+            Logger.getLogger(MysqlClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+        if(rs == null){ 
+        try {
+            rs.close();
+            } catch (SQLException ex) {
                 Logger.getLogger(MysqlClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
             }
-         }
-       
+            }
+            if(pst != null ){
+                try {
+                    pst.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(MysqlClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+            }
+            }
         }
-        return instructor;
+            
+        }
+        
+       return instructor;
     }
 
     @Override
@@ -165,12 +178,12 @@ Connection conn;
         try {
            pst = conn.prepareStatement(BUSQUEDA);
           pst.setString(1, id);
-          pst.executeQuery();
+          rs = pst.executeQuery();
           if(rs.next()){
           instructor = buscando(rs);
           }
           
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println("error busqueda" + e);
         }finally{
         if(rs != null){
@@ -184,6 +197,7 @@ Connection conn;
         }
        
     return instructor;
+
     }
     
     
