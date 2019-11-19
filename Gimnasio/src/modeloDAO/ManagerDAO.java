@@ -2,6 +2,7 @@
 package modeloDAO;
 
 import modeloDAO.ClienteDAO;
+import modeloDAO.InstructorDAO;
 
 /**
  *

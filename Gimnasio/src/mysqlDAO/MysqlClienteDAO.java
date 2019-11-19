@@ -70,12 +70,10 @@ String BUSQUEDA = "SELECT cedula,nombre,apellido,direccion,telefono,fecha FROM c
                 
             }
             
-        } catch (Exception e) {
-            System.out.println("Error : "+ e);
+        } catch (SQLException e) {
+            System.out.println("Error------: "+ e);
         
         }
-        
-    
     }
 
     @Override
@@ -88,7 +86,7 @@ String BUSQUEDA = "SELECT cedula,nombre,apellido,direccion,telefono,fecha FROM c
             if(pst.executeUpdate() == 0){
                     System.out.println("eliminado");
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println("Error Elimiar " + e);
         }
         
@@ -109,11 +107,13 @@ String BUSQUEDA = "SELECT cedula,nombre,apellido,direccion,telefono,fecha FROM c
             pst.setString(7, user.getCedula());
              
             if(pst.executeUpdate() == 0){
-                System.out.println("Error");
+                System.out.println("Error modificar ");
+            }else{
+                System.out.println("Modificado");
             } 
              
              
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println("Error Modificar " + e);
         }
  
@@ -135,7 +135,7 @@ String BUSQUEDA = "SELECT cedula,nombre,apellido,direccion,telefono,fecha FROM c
              
           }
           
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println("error buscar todos" + e);
         }finally{
         if(rs != null){
@@ -184,7 +184,7 @@ String BUSQUEDA = "SELECT cedula,nombre,apellido,direccion,telefono,fecha FROM c
           cliente = buscando(rs);
           }
           
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println("error busqueda" + e);
         }finally{
         if(rs != null){

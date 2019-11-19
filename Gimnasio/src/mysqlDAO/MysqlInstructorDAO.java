@@ -76,11 +76,7 @@ Connection conn;
             System.out.println("Error : "+ e);
         
         }finally{
-            try {
-                conn.close();
-            } catch (SQLException ex) {
-                Logger.getLogger(MysqlClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
-            }       
+                 
         }    
     }
 
@@ -122,9 +118,11 @@ Connection conn;
             pst.setString(7, user.getHora());
             pst.setString(8, user.getCodigo());
              
-            if(pst.executeUpdate() == 0){
-                System.out.println("Error");
-            }   
+             if(pst.executeUpdate() == 0){
+                System.out.println("Error modificar ");
+            }else{
+                System.out.println("Modificado");
+            }  
              
         } catch (Exception e) {
             System.out.println("Error Modificar " + e);

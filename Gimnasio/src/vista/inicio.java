@@ -53,9 +53,12 @@ public class inicio extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Registrar Instructor");
-
-        jButton3.setText("Tomar clases");
+        jButton3.setText("Panel Instructor");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/images/fondo.png"))); // NOI18N
 
@@ -126,6 +129,16 @@ public class inicio extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        
+        Instructor instructor = new Instructor(manager);
+        instructor.setVisible(true);
+        this.dispose();
+        
+        
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
